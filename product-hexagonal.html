@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>BBQ Charcoal Briquette – NusaCoco Charcoal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./dist/tailwind.css" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/icon-navbar.png" />
+    <!-- (opsional) untuk beberapa browser / device -->
+    <link rel="shortcut icon" type="image/png" href="img/icon-navbar.png" />
+    <!-- Fade-in animation -->
+    <style>
+        .fade-section {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .fade-section.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="bg-white text-neutral-900">
+    <!-- NAVBAR -->
+    <header class="bg-black text-white border-b border-neutral-800 sticky top-0 z-20">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <!-- Left: Logo + Brand -->
+            <a href="index.html">
+                <div class="flex items-center gap-3">
+                    <img src="img/icon-navbar.png" alt="NusaCoco Charcoal Logo" class="h-10 w-10 object-contain" />
+                    <span class="text-xs sm:text-sm md:text-base font-semibold tracking-[0.18em] uppercase">
+                        NUSACOCO CHARCOAL
+                    </span>
+                </div>
+            </a>
+
+            <!-- Right: Menu (desktop) -->
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+                <a href="index.html" class="hover:text-amber-300 transition-colors">
+                    Home
+                </a>
+
+                <a href="about-page.html" class="hover:text-amber-300 transition-colors">
+                    About Us
+                </a>
+
+                <!-- DROPDOWN PRODUCT (DESKTOP – klik untuk buka/tutup) -->
+                <div class="relative">
+                    <button id="product-menu-btn" type="button"
+                        class="inline-flex items-center gap-1 text-sm font-medium text-amber-400 hover:text-amber-300 transition-colors">
+                        <span>Product</span>
+                        <span id="product-menu-chevron" class="text-xs transition-transform duration-200">
+                            ▼
+                        </span>
+                    </button>
+
+                    <!-- Panel dropdown -->
+                    <div id="product-menu"
+                        class="hidden absolute right-0 mt-3 w-72 rounded-xl border border-amber-500/25 bg-neutral-900/95 backdrop-blur-md shadow-[0_18px_45px_rgba(0,0,0,0.65)] origin-top-right z-30">
+                        <div class="px-4 pt-3 pb-2 border-b border-white/5">
+                            <p class="text-[11px] uppercase tracking-[0.18em] text-neutral-400">
+                                Charcoal Series
+                            </p>
+                        </div>
+
+                        <div class="py-1 text-sm">
+                            <a href="product-cube.html"
+                                class="flex items-center gap-3 px-4 py-2.5 text-xs md:text-sm text-neutral-100 border-b border-white/5 last:border-0 hover:bg-amber-500/10 hover:text-amber-300 transition-colors">
+                                <span class="h-2 w-2 rounded-full bg-amber-400/80"></span>
+                                <span>Shisa Charcoal Briquette</span>
+                            </a>
+
+                            <a href="product-hexagonal.html"
+                                class="flex items-center gap-3 px-4 py-2.5 text-xs md:text-sm text-amber-300 bg-amber-500/10 border-b border-white/5 last:border-0">
+                                <span class="h-2 w-2 rounded-full bg-amber-400/80"></span>
+                                <span>BBQ Charcoal Briquette</span>
+                            </a>
+
+                            
+
+
+
+                            <a href="product-shell.html"
+                                class="flex items-center gap-3 px-4 py-2.5 text-xs md:text-sm text-neutral-100 last:border-0 hover:bg-amber-500/10 hover:text-amber-300 transition-colors">
+                                <span class="h-2 w-2 rounded-full bg-amber-400/80"></span>
+                                <span>Raw Coconut Shell Charcoal</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="contact.html" class="hover:text-amber-300 transition-colors">
+                    Contact
+                </a>
+
+                <a href="https://wa.me/082137603975"
+                    class="ml-2 inline-flex items-center gap-2 rounded-sm bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700 transition-colors">
+                    <span>
+                        <img src="img/icon-contact.png" alt="" class="w-4 h-4" />
+                    </span>
+                    <span>Contact Us</span>
+                </a>
+            </nav>
+
+            <!-- Hamburger (mobile) -->
+            <button id="mobile-menu-btn"
+                class="md:hidden inline-flex items-center justify-center w-9 h-9 border border-neutral-700 rounded-sm">
+                <span class="sr-only">Toggle navigation</span>
+                <div class="space-y-1.5">
+                    <span class="block w-5 h-0.5 bg-white"></span>
+                    <span class="block w-5 h-0.5 bg-white"></span>
+                    <span class="block w-5 h-0.5 bg-white"></span>
+                </div>
+            </button>
+        </div>
+
+        <!-- Mobile menu -->
+        <nav id="mobile-menu" class="md:hidden hidden border-t border-neutral-800 bg-black px-4 py-3 space-y-2 text-sm">
+            <a href="index.html" class="block py-1 hover:text-amber-300">Home</a>
+            <a href="about-page.html" class="block py-1 hover:text-amber-300">
+                About Us
+            </a>
+
+            <p class="pt-2 text-[11px] uppercase tracking-[0.18em] text-neutral-400">
+                Product
+            </p>
+            <a href="product-cube.html" class="block pl-3 py-1 hover:text-amber-300">
+                Shisa Charcoal Briquette
+            </a>
+            <a href="product-hexagonal.html" class="block pl-3 py-1 text-amber-300">
+                BBQ Charcoal Briquette
+            </a>
+            <a href="product-perforated.html" class="block pl-3 py-1 hover:text-amber-300">
+                Perforated Charcoal Briquette
+            </a>
+            <a href="product-stick.html" class="block pl-3 py-1 hover:text-amber-300">
+                Stick Charcoal Briquette
+            </a>
+            <a href="product-shell.html" class="block pl-3 py-1 hover:text-amber-300">
+                Raw Coconut Shell Charcoal
+            </a>
+
+            <a href="contact.html" class="block pt-2 pb-1 hover:text-amber-300">
+                Contact
+            </a>
+            <a href="https://wa.me/082137603975"
+                class="inline-flex items-center gap-2 rounded-sm bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700 transition-colors mt-2">
+                <span>
+                    <img src="img/icon-contact.png" alt="" class="w-4 h-4" />
+                </span>
+                <span>Contact Us</span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hexa-hero" class="relative fade-section">
+        <div class="absolute inset-0">
+            <img src="img/hero-product-hexa.png" alt="BBQ Charcoal Briquettes hero background"
+                class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-b  from-black/40 via-black/50 to-black/40"></div>
+        </div>
+
+        <div class="relative max-w-4xl mx-auto px-4 py-20 md:py-28 text-center text-white">
+            <p class="text-xs md:text-sm uppercase tracking-[0.24em] mb-3">
+                Product
+            </p>
+            <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 text-amber-400">
+                BBQ Charcoal Briquette
+            </h1>
+            <p class="text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
+                Premium coconut shell hexagonal briquettes designed for long-lasting,
+                clean heat—perfect for BBQ.
+            </p>
+        </div>
+    </section>
+
+    <!-- PRODUCT OVERVIEW -->
+    <section id="product-overview" class="bg-white text-neutral-900 py-16 md:py-20 fade-section">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8 grid md:grid-cols-[1.45fr,1fr] gap-12 items-center">
+            <!-- Text -->
+            <div>
+                <h2 class="text-2xl md:text-3xl font-extrabold mb-6">
+                    Product Overview
+                </h2>
+
+                <p class="text-sm md:text-base leading-relaxed mb-4">
+                    Our BBQ charcoal briquettes are manufactured from 100% coconut shell charcoal and compressed into
+                    hexagonal pieces with a central air channel. This design promotes strong airflow and a stable ember
+                    bed, giving grill operators consistent high heat for searing as well as the option to cook low and
+                    slow.
+                </p>
+                <p class="text-sm md:text-base leading-relaxed">
+                    The briquettes are robust enough to handle frequent turning and repositioning on the grill, making
+                    them suitable for both home users and professional kitchens that demand predictable performance.
+                </p>
+            </div>
+
+            <!-- Image -->
+            <div class="flex justify-center md:justify-end">
+                <img src="img/hexa-product-page.png" alt="BBQ Charcoal Briquette product"
+                    class="w-full max-w-xs h-auto object-contain drop-shadow-xl" />
+            </div>
+        </div>
+    </section>
+
+    <!-- KEY FEATURES & BENEFITS -->
+    <section id="key-features" class="bg-white text-neutral-900 pb-12 md:pb-16 fade-section">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            <h2 class="text-2xl md:text-3xl font-extrabold mb-6">
+                Key Features &amp; Benefits
+            </h2>
+
+            <div class="space-y-2 text-sm md:text-base leading-relaxed">
+                <p>
+                    <span class="font-semibold">High, Stable Grilling Temperature</span> – Formulated to reach and
+                    maintain the kind of heat needed for proper searing, attractive grill marks, and safe cooking.
+                </p>
+                <p>
+                    <span class="font-semibold">Airflow-Enhanced Design</span> – The hexagonal body and inner hole
+                    encourage oxygen flow, helping briquettes ignite quickly and stay lit with less tending.
+                </p>
+                <p>
+                    <span class="font-semibold">Reduced Smoke & Flare-Ups</span> – Low volatile content supports cleaner
+                    combustion, helping to limit flare-ups caused by excess fat dripping onto the coals.
+                </p>
+                <p>
+                    <span class="font-semibold">Efficient Fuel Usage</span> – Dense composition means less charcoal is
+                    required to prepare the grill, reducing total consumption per service or per cookout.
+                </p>
+                <p>
+                    <span class="font-semibold">Consistent Piece Size</span> – Uniform dimensions make it easier to
+                    control the heat zone layout inside the grill, whether for direct grilling or indirect cooking.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TYPICAL APPLICATIONS -->
+    <section id="applications" class="bg-white text-neutral-900 pb-20 md:pb-24 fade-section">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            <h2 class="text-2xl md:text-3xl font-extrabold mb-6">
+                Typical Applications
+            </h2>
+
+            <ul class="space-y-2 text-sm md:text-base leading-relaxed">
+                <li>Backyard and family BBQ gatherings</li>
+                <li>Restaurant, hotel, and catering grills</li>
+                <li>Food stalls and street-food vendors</li>
+                <li>Commercial rotisserie and charcoal oven operations</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="bg-[#f4f4f4] text-neutral-900 pt-16 pb-8 fade-section">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            <div class="grid gap-10 md:grid-cols-[1.6fr,1fr,1fr] items-start">
+                <!-- Brand & description -->
+                <div class="flex gap-6">
+                    <div class="flex-shrink-0">
+                        <img src="img/icon-footer.png" alt="Nusacoco Charcoal footer logo"
+                            class="w-24 h-24 object-contain" />
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-extrabold mb-3">Nusacoco Charcoal</h3>
+                        <p class="text-sm leading-relaxed">
+                            Nusacoco Charcoal sources and supplies premium coconut shell
+                            charcoal products, including briquettes and lump charcoal, all
+                            made from 100% Indonesian coconut shells.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Location -->
+                <div>
+                    <h4 class="text-sm font-extrabold tracking-wide mb-4 flex items-center gap-2">
+                        <span class="h-5 w-0.5 bg-amber-500 inline-block"></span>
+                        <span>OUR LOCATION</span>
+                    </h4>
+                    <p class="text-sm leading-relaxed">
+                        Jl. Klipang Permai Blok G 87A RT 007 RW 0023W, Kel. Sendang
+                        Mulyo, Kec. Tembalang, Kota Semarang, Jawa Tengah, Indonesia.
+                    </p>
+                </div>
+
+                <!-- Social / connect -->
+                <div>
+                    <h4 class="text-sm font-extrabold tracking-wide mb-4 flex items-center gap-2">
+                        <span class="h-5 w-0.5 bg-amber-500 inline-block"></span>
+                        <span>CONNECT WITH US</span>
+                    </h4>
+                    <div class="flex items-center gap-4">
+                        <img src="img/icon-wa.png" alt="WhatsApp" class="w-8 h-8 object-contain" />
+                        <img src="img/icon-instagram.png" alt="Instagram" class="w-8 h-8 object-contain" />
+                        <img src="img/icon-tiktok.png" alt="TikTok" class="w-8 h-8 object-contain" />
+                        <img src="img/icon-facebook.png" alt="Facebook" class="w-8 h-8 object-contain" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-14 border-t border-neutral-400"></div>
+
+            <div class="mt-4 text-center text-xs md:text-sm text-neutral-700">
+                Copyright© 2025
+                <span class="font-extrabold">Nusacoco Charcoal</span> – All Rights
+                Reserved. Designed by <span class="font-semibold">TobiCode</span>.
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT: dropdown, mobile menu, fade-in -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Mobile menu toggle
+            const mobileBtn = document.getElementById("mobile-menu-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
+
+            if (mobileBtn && mobileMenu) {
+                mobileBtn.addEventListener("click", () => {
+                    mobileMenu.classList.toggle("hidden");
+                });
+
+                mobileMenu.querySelectorAll("a").forEach((link) => {
+                    link.addEventListener("click", () => {
+                        mobileMenu.classList.add("hidden");
+                    });
+                });
+            }
+
+            // Dropdown Product (desktop)
+            const productBtn = document.getElementById("product-menu-btn");
+            const productMenu = document.getElementById("product-menu");
+            const productChevron = document.getElementById("product-menu-chevron");
+
+            if (productBtn && productMenu) {
+                const toggleProductMenu = () => {
+                    productMenu.classList.toggle("hidden");
+                    if (productChevron) {
+                        productChevron.classList.toggle("rotate-180");
+                    }
+                };
+
+                productBtn.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    toggleProductMenu();
+                });
+
+                document.addEventListener("click", function (e) {
+                    if (
+                        !productMenu.classList.contains("hidden") &&
+                        !productMenu.contains(e.target) &&
+                        !productBtn.contains(e.target)
+                    ) {
+                        productMenu.classList.add("hidden");
+                        if (productChevron) {
+                            productChevron.classList.remove("rotate-180");
+                        }
+                    }
+                });
+            }
+
+            // Fade-in on scroll
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("in-view");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.15 }
+            );
+
+            document
+                .querySelectorAll(".fade-section")
+                .forEach((el) => observer.observe(el));
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>About – NusaCoco Charcoal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./dist/tailwind.css" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/icon-navbar.png" />
+    <!-- (opsional) untuk beberapa browser / device -->
+    <link rel="shortcut icon" type="image/png" href="img/icon-navbar.png" />
+    <!-- Fade-in animation style -->
+    <style>
+        .fade-section {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .fade-section.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="bg-white text-neutral-900">
+    <!-- NAVBAR -->
+    <header class="bg-black text-white border-b border-neutral-800 sticky top-0 z-20">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <!-- Left: Logo + Brand -->
+            <a href="index.html">
+                <div class="flex items-center gap-3">
+                    <img src="img/icon-navbar.png" alt="NusaCoco Charcoal Logo" class="h-10 w-10 object-contain" />
+                    <span class="text-xs sm:text-sm md:text-base font-semibold tracking-[0.18em] uppercase">
+                        NUSACOCO CHARCOAL
+                    </span>
+                </div>
+            </a>
+
+            <!-- Right: Menu (desktop) -->
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+                <!-- Home biasa (tidak aktif) -->
+                <a href="index.html" class="hover:text-amber-300 transition-colors">
+                    Home
+                </a>
+
+                <!-- About aktif -->
+                <a href="about-page.html" class="text-amber-400">About Us</a>
+
+                <!-- DROPDOWN PRODUCT (DESKTOP – klik untuk buka/tutup) -->
+                <div class="relative">
+                    <button id="product-menu-btn" type="button"
+                        class="inline-flex items-center gap-1 text-sm font-medium hover:text-amber-300 transition-colors">
+                        <span>Product</span>
+                        <span id="product-menu-chevron" class="text-xs transition-transform duration-200">
+                            ▼
+                        </span>
+                    </button>
+
+                    <!-- Panel dropdown -->
+                    <div id="product-menu"
+                        class="hidden absolute right-0 mt-3 w-72 rounded-xl border border-amber-500/25 bg-neutral-900/95 backdrop-blur-md shadow-[0_18px_45px_rgba(0,0,0,0.65)] origin-top-right z-30">
+                        <!-- Header kecil di dalam dropdown -->
+                        <div class="px-4 pt-3 pb-2 border-b border-white/5">
+                            <p class="text-[11px] uppercase tracking-[0.18em] text-neutral-400">
+                                Charcoal Series
+                            </p>
+                        </div>
+
+                        <div class="py-1 text-sm">
+                            <a href="product-cube.html"
+                                class="flex items-center gap-3 px-4 py-2.5 text-xs md:text-sm text-neutral-100 border-b border-white/5 last:border-0 hover:bg-amber-500/10 hover:text-amber-300 transition-colors">
+                                <span class="h-2 w-2 rounded-full bg-amber-400/80"></span>
+                                <span>Shisa Charcoal Briquette</span>
+                            </a>
+
+                            <a href="product-hexagonal.html"
+                                class="flex items-center gap-3 px-4 py-2.5 text-xs md:text-sm text-neutral-100 border-b border-white/5 last:border-0 hover:bg-amber-500/10 hover:text-amber-300 transition-colors">
+                                <span class="h-2 w-2 rounded-full bg-amber-400/80"></span>
+                                <span>BBQ Charcoal Briquette</span>
+                            </a>
+
+                            
+
+
+
+                            <a href="product-shell.html"
+                                class="flex items-center gap-3 px-4 py-2.5 text-xs md:text-sm text-neutral-100 last:border-0 hover:bg-amber-500/10 hover:text-amber-300 transition-colors">
+                                <span class="h-2 w-2 rounded-full bg-amber-400/80"></span>
+                                <span>Raw Coconut Shell Charcoal</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="contact.html" class="hover:text-amber-300 transition-colors">
+                    Contact
+                </a>
+
+                <a href="https://wa.me/082137603975"
+                    class="ml-2 inline-flex items-center gap-2 rounded-sm bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700 transition-colors">
+                    <span>
+                        <img src="img/icon-contact.png" alt="" class="w-4 h-4" />
+                    </span>
+                    <span>Contact Us</span>
+                </a>
+            </nav>
+
+            <!-- Hamburger (mobile) -->
+            <button id="mobile-menu-btn"
+                class="md:hidden inline-flex items-center justify-center w-9 h-9 border border-neutral-700 rounded-sm">
+                <span class="sr-only">Toggle navigation</span>
+                <div class="space-y-1.5">
+                    <span class="block w-5 h-0.5 bg-white"></span>
+                    <span class="block w-5 h-0.5 bg-white"></span>
+                    <span class="block w-5 h-0.5 bg-white"></span>
+                </div>
+            </button>
+        </div>
+
+        <!-- Mobile menu -->
+        <nav id="mobile-menu" class="md:hidden hidden border-t border-neutral-800 bg-black px-4 py-3 space-y-2 text-sm">
+            <a href="index.html" class="block py-1 hover:text-amber-300">Home</a>
+            <a href="about-page.html" class="block py-1 text-amber-400">About Us</a>
+
+            <!-- Product list (mobile) -->
+            <p class="pt-2 text-[11px] uppercase tracking-[0.18em] text-neutral-400">
+                Product
+            </p>
+            <a href="product-cube.html" class="block pl-3 py-1 hover:text-amber-300">
+                Shisa Charcoal Briquette
+            </a>
+            <a href="product-hexagonal.html" class="block pl-3 py-1 hover:text-amber-300">
+                BBQ Charcoal Briquette
+            </a>
+            <a href="product-perforated.html" class="block pl-3 py-1 hover:text-amber-300">
+                Perforated Charcoal Briquette
+            </a>
+            <a href="product-stick.html" class="block pl-3 py-1 hover:text-amber-300">
+                Stick Charcoal Briquette
+            </a>
+            <a href="product-shell.html" class="block pl-3 py-1 hover:text-amber-300">
+                Raw Coconut Shell Charcoal
+            </a>
+
+            <a href="contact.html" class="block pt-2 pb-1 hover:text-amber-300">
+                Contact
+            </a>
+            <a href="https://wa.me/082137603975"
+                class="inline-flex items-center gap-2 rounded-sm bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700 transition-colors mt-2">
+                <span>
+                    <img src="img/icon-contact.png" alt="" class="w-4 h-4" />
+                </span>
+                <span>Contact Us</span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION (ABOUT PAGE) -->
+    <section id="about-hero" class="relative fade-section">
+        <!-- Background image -->
+        <div class="absolute inset-0">
+            <img src="img/about-hero-section.png" alt="About NusaCoco Charcoal hero background"
+                class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-amber-900/40 to-black/80"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative max-w-4xl mx-auto px-4 py-20 md:py-28 text-left text-white">
+            <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-6">
+                Welcome to<br class="hidden md:block" />
+                <span class="text-amber-400">Nusacoco Charcoal</span>
+            </h1>
+            <p class="text-sm md:text-base leading-relaxed max-w-2xl">
+                We are committed to delivering reliable, export-ready coconut shell
+                charcoal while supporting responsible sourcing and long-term
+                partnerships with producers across Indonesia.
+            </p>
+        </div>
+    </section>
+
+    <!-- ABOUT US MAIN SECTION -->
+    <section id="about-main" class="bg-white text-neutral-900 py-16 md:py-20 fade-section">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8 grid md:grid-cols-[1.4fr,1fr] gap-12 items-center">
+            <!-- Text + mobile image -->
+            <div class="md:order-1">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-6">About Us</h2>
+
+                <!-- Image (MOBILE) -->
+                <div class="mb-6 md:hidden">
+                    <img src="img/about-aboutUSSection.png" alt="NusaCoco Charcoal production and workers"
+                        class="w-full max-w-md h-auto rounded-2xl shadow-xl object-cover" />
+                </div>
+
+                <!-- Content -->
+                <p class="text-sm md:text-base leading-relaxed mb-4">
+                    <span class="font-semibold">NusaCoco Charcoal</span> is a trading
+                    and export company focused on supplying premium coconut shell
+                    charcoal products from Indonesia to the world. We connect carefully
+                    selected local producers with international buyers, providing
+                    coconut shell briquettes and lump charcoal that support cleaner,
+                    more sustainable energy use.
+                </p>
+
+                <p class="text-sm md:text-base leading-relaxed">
+                    Founded with the aim of turning Indonesia’s abundant coconut
+                    resources into high-value products for global markets, NusaCoco
+                    Charcoal places strong emphasis on reliability, transparency, and
+                    long-term partnerships. Whether you are a shisha brand, BBQ
+                    distributor, or industrial user, our role is to make your charcoal
+                    sourcing simpler, safer, and more consistent.
+                </p>
+            </div>
+
+            <!-- Image (DESKTOP) -->
+            <div class="hidden md:flex justify-center md:justify-end md:order-2">
+                <img src="img/about-aboutUSSection.png" alt="NusaCoco Charcoal production and workers"
+                    class="w-full max-w-md h-auto rounded-2xl shadow-xl object-cover" />
+            </div>
+        </div>
+    </section>
+
+
+    <!-- OUR CORE PRINCIPLES -->
+    <section id="core-principles" class="bg-white text-neutral-900 py-16 md:py-20 fade-section">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-6">
+                Our Core Principles
+            </h2>
+
+            <p class="text-sm md:text-base leading-relaxed mb-10 max-w-3xl">
+                Our day-to-day operations are guided by four core principles:
+            </p>
+
+            <div class="space-y-8 text-sm md:text-base leading-relaxed">
+                <!-- Responsible Sourcing -->
+                <div>
+                    <h3 class="font-semibold mb-1">Responsible Sourcing</h3>
+                    <p>
+                        We work with trusted Indonesian producers who use 100% coconut
+                        shells as raw material. By utilizing agricultural by-products, we
+                        help reduce waste and support more sustainable alternatives to
+                        traditional wood charcoal.
+                    </p>
+                </div>
+
+                <!-- Consistent Quality -->
+                <div>
+                    <h3 class="font-semibold mb-1">Consistent Quality</h3>
+                    <p>
+                        Every shipment is selected based on key export parameters such as
+                        fixed carbon, moisture, ash content, size, and shape consistency.
+                        This focus on quality ensures stable heat, low smoke, and clean
+                        performance for your end customers.
+                    </p>
+                </div>
+
+                <!-- Reliable Logistics -->
+                <div>
+                    <h3 class="font-semibold mb-1">Reliable Logistics</h3>
+                    <p>
+                        From supplier coordination to loading supervision and export
+                        documentation, we aim to make the logistics side as smooth as
+                        possible. Our goal is simple: predictable shipments so you can
+                        focus on growing your market.
+                    </p>
+                </div>
+
+                <!-- Partnership Mindset -->
+                <div>
+                    <h3 class="font-semibold mb-1">Partnership Mindset</h3>
+                    <p>
+                        We don’t see ourselves as just a supplier, but as a partner in
+                        your supply chain. Open communication, honest feedback, and
+                        flexibility as your volume grows are at the center of how we work
+                        with every client.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISION & MISSION SECTION -->
+    <section id="vision-mission" class="bg-white text-neutral-900 py-16 md:py-20 fade-section">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            <div class="grid gap-10 lg:gap-12 md:grid-cols-2">
+                <!-- VISION CARD -->
+                <div class="border border-amber-500 rounded-2xl px-8 py-8 md:px-10 md:py-10 shadow-sm">
+                    <div class="flex items-center gap-3 mb-6">
+                        <img src="img/icon-vision.png" alt="Vision icon"
+                            class="w-8 h-8 md:w-10 md:h-10 object-contain" />
+                        <h2 class="text-2xl md:text-3xl font-extrabold">Vision</h2>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <img src="img/icon-check.png" alt="" class="mt-1 w-5 h-5 md:w-6 md:h-6 object-contain" />
+                        <p class="text-sm md:text-base leading-relaxed">
+                            To be a globally trusted partner for coconut shell charcoal from
+                            Indonesia—delivering reliable, sustainable products that support
+                            businesses, respect the environment, and showcase the strength
+                            of Indonesia’s natural resources.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- MISSION CARD -->
+                <div class="border border-amber-500 rounded-2xl px-8 py-8 md:px-10 md:py-10 shadow-sm">
+                    <div class="flex items-center gap-3 mb-6">
+                        <img src="img/icon-mission.png" alt="Mission icon"
+                            class="w-8 h-8 md:w-10 md:h-10 object-contain" />
+                        <h2 class="text-2xl md:text-3xl font-extrabold">Mission</h2>
+                    </div>
+
+                    <div class="space-y-4 text-sm md:text-base leading-relaxed">
+                        <!-- 1 -->
+                        <div class="flex items-start gap-3">
+                            <img src="img/icon-check.png" alt="" class="mt-1 w-5 h-5 md:w-6 md:h-6 object-contain" />
+                            <p>
+                                <span class="font-semibold">Deliver Reliable Products</span><br />
+                                To supply export-ready coconut shell briquettes and lump
+                                charcoal with consistent quality that meets diverse market
+                                requirements.
+                            </p>
+                        </div>
+
+                        <!-- 2 -->
+                        <div class="flex items-start gap-3">
+                            <img src="img/icon-check.png" alt="" class="mt-1 w-5 h-5 md:w-6 md:h-6 object-contain" />
+                            <p>
+                                <span class="font-semibold">Promote Sustainable Energy</span><br />
+                                To prioritize coconut shell–based charcoal as a cleaner, more
+                                responsible fuel option compared to traditional wood-based
+                                alternatives.
+                            </p>
+                        </div>
+
+                        <!-- 3 -->
+                        <div class="flex items-start gap-3">
+                            <img src="img/icon-check.png" alt="" class="mt-1 w-5 h-5 md:w-6 md:h-6 object-contain" />
+                            <p>
+                                <span class="font-semibold">Support Local Communities</span><br />
+                                To collaborate with Indonesian producers, farmers, and
+                                processors, helping create stable demand and long-term
+                                economic opportunities at the source.
+                            </p>
+                        </div>
+
+                        <!-- 4 -->
+                        <div class="flex items-start gap-3">
+                            <img src="img/icon-check.png" alt="" class="mt-1 w-5 h-5 md:w-6 md:h-6 object-contain" />
+                            <p>
+                                <span class="font-semibold">Improve Continuously</span><br />
+                                To keep refining our sourcing, quality control, and logistics
+                                processes so clients experience smoother transactions and
+                                better product performance over time.
+                            </p>
+                        </div>
+
+                        <!-- 5 -->
+                        <div class="flex items-start gap-3">
+                            <img src="img/icon-check.png" alt="" class="mt-1 w-5 h-5 md:w-6 md:h-6 object-contain" />
+                            <p>
+                                <span class="font-semibold">Expand Global Connections</span><br />
+                                To build enduring relationships with buyers across
+                                regions—Asia, Europe, the Middle East, and beyond—through
+                                transparent service and dependable supply.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="bg-[#f4f4f4] text-neutral-900 pt-16 pb-8 fade-section">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            <!-- Top area -->
+            <div class="grid gap-10 md:grid-cols-[1.6fr,1fr,1fr] items-start">
+                <!-- Brand & description -->
+                <div class="flex gap-6">
+                    <!-- Logo (footer icon) -->
+                    <div class="flex-shrink-0">
+                        <img src="img/icon-footer.png" alt="Nusacoco Charcoal footer logo"
+                            class="w-24 h-24 object-contain" />
+                    </div>
+                    <!-- Text -->
+                    <div>
+                        <h3 class="text-xl font-extrabold mb-3">Nusacoco Charcoal</h3>
+                        <p class="text-sm leading-relaxed">
+                            Nusacoco Charcoal sources and supplies premium coconut shell
+                            charcoal products, including briquettes and lump charcoal, all
+                            made from 100% Indonesian coconut shells.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Location -->
+                <div>
+                    <h4 class="text-sm font-extrabold tracking-wide mb-4 flex items-center gap-2">
+                        <span class="h-5 w-0.5 bg-amber-500 inline-block"></span>
+                        <span>OUR LOCATION</span>
+                    </h4>
+                    <p class="text-sm leading-relaxed">
+                        Jl. Klipang Permai Blok G 87A RT 007 RW 0023W, Kel. Sendang
+                        Mulyo, Kec. Tembalang, Kota Semarang, Jawa Tengah, Indonesia.
+                    </p>
+                </div>
+
+                <!-- Social / connect -->
+                <div>
+                    <h4 class="text-sm font-extrabold tracking-wide mb-4 flex items-center gap-2">
+                        <span class="h-5 w-0.5 bg-amber-500 inline-block"></span>
+                        <span>CONNECT WITH US</span>
+                    </h4>
+                    <div class="flex items-center gap-4">
+                        <img src="img/icon-wa.png" alt="WhatsApp" class="w-8 h-8 object-contain" />
+                        <img src="img/icon-instagram.png" alt="Instagram" class="w-8 h-8 object-contain" />
+                        <img src="img/icon-tiktok.png" alt="TikTok" class="w-8 h-8 object-contain" />
+                        <img src="img/icon-facebook.png" alt="Facebook" class="w-8 h-8 object-contain" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="mt-14 border-t border-neutral-400"></div>
+
+            <!-- Bottom copyright -->
+            <div class="mt-4 text-center text-xs md:text-sm text-neutral-700">
+                Copyright© 2025
+                <span class="font-extrabold">Nusacoco Charcoal</span> – All Rights
+                Reserved. Designed by <span class="font-semibold">TobiCode</span>.
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS: fade-in + navbar behaviour -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            /* ------------------------
+               Fade-in on scroll
+            -------------------------*/
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("in-view");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.15 }
+            );
+
+            document
+                .querySelectorAll(".fade-section")
+                .forEach((el) => observer.observe(el));
+
+            /* ------------------------
+               Mobile menu toggle
+            -------------------------*/
+            const mobileBtn = document.getElementById("mobile-menu-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
+
+            if (mobileBtn && mobileMenu) {
+                mobileBtn.addEventListener("click", () => {
+                    mobileMenu.classList.toggle("hidden");
+                });
+
+                // Tutup menu ketika salah satu link diklik
+                mobileMenu.querySelectorAll("a").forEach((link) => {
+                    link.addEventListener("click", () => {
+                        mobileMenu.classList.add("hidden");
+                    });
+                });
+            }
+
+            /* ------------------------
+               Product dropdown (desktop)
+            -------------------------*/
+            const productBtn = document.getElementById("product-menu-btn");
+            const productMenu = document.getElementById("product-menu");
+            const productChevron = document.getElementById("product-menu-chevron");
+
+            if (productBtn && productMenu) {
+                const toggleProductMenu = () => {
+                    productMenu.classList.toggle("hidden");
+                    if (productChevron) {
+                        productChevron.classList.toggle("rotate-180");
+                    }
+                };
+
+                productBtn.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    toggleProductMenu();
+                });
+
+                // Klik di luar dropdown => tutup
+                document.addEventListener("click", function (e) {
+                    if (
+                        !productMenu.classList.contains("hidden") &&
+                        !productMenu.contains(e.target) &&
+                        !productBtn.contains(e.target)
+                    ) {
+                        productMenu.classList.add("hidden");
+                        if (productChevron) {
+                            productChevron.classList.remove("rotate-180");
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
